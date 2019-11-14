@@ -1,5 +1,6 @@
 import java.util.Scanner;
 /**
+ * @author - Antonio Nieto
  *   Clase de utilidades
  *   Incluye métodos estáticos
  */

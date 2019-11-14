@@ -102,8 +102,9 @@ public class DemoBucles
         System.out.println();
         int aleatorio = generador.nextInt(256);
         int i = 1;
-        escribirSumaPotencias(aleatorio);
-        while(aleatorio != 255 || i <= n){
+       
+        while(aleatorio != 255 && i <= n){
+            aleatorio = generador.nextInt(256);
             escribirSumaPotencias(aleatorio);   
             System.out.println();
             i++;
@@ -118,7 +119,7 @@ public class DemoBucles
     public void escribirCaracter(int n, char caracter)
     {
         for(int veces = 1;veces <= n;veces++){
-            System.out.printf("%c ",caracter); 
+            System.out.printf("%c",caracter); 
 
         }
     }
