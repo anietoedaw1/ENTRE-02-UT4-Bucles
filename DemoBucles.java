@@ -1,17 +1,19 @@
+import java.util.Random;
 /**
- *    @author - 
+ *    @author - Antonio Nieto
  */
 public class DemoBucles
 {
     private final char ASTERISCO = '*';
     private final char ESPACIO = ' ';
+    private Random generador;
 
     /**
      * Constructor  
      */
     public DemoBucles()
     {
-       
+        generador = new Random();
     }
 
     /**
@@ -26,9 +28,31 @@ public class DemoBucles
      *  Usa bucles while
      */
     public int mayorPotencia2(int numero) {
-        
-        return 0;
+        // int mayorPotencia = 1;
+        // while (mayorPotencia < numero) {
+        // mayorPotencia *= 2;
+        // }
+        // return mayorPotencia/2;
+        // int n = 1;
+        // int resultado = 0;
+        // while(i <= numero){
+        // i *= 2;
+        // resultado++;;
+        // }
+        // return resultado;
 
+        int exponente = 0;
+
+        while((int)Math.pow(2,exponente)< numero){
+
+            exponente++;}
+
+        if ((int)Math.pow(2,exponente)==numero){
+
+            return (int)Math.pow(2,exponente);}
+        else{
+            exponente--;
+            return (int)Math.pow(2,exponente);}
     }
 
     /**
@@ -47,8 +71,19 @@ public class DemoBucles
      *  64 =    64
      */
     public void escribirSumaPotencias(int numero) {
+        int potencia = mayorPotencia2(numero);
+        int sumatorio = 0;
+        while(sumatorio != numero){
+            int resto = numero - potencia;
+            sumatorio+=potencia;
+            System.out.printf("%6d = %6d",numero,potencia);
+            while(resto != 0) {
+                sumatorio+=mayorPotencia2(resto);
+                System.out.printf("%6d",mayorPotencia2(resto));
+                resto-=mayorPotencia2(resto);
 
-         
+            }
+        }
 
     }
 
@@ -64,9 +99,15 @@ public class DemoBucles
      * 
      */
     public void generarAleatorios(int n) {
-
-       
-
+        System.out.println();
+        int aleatorio = generador.nextInt(256);
+        int i = 1;
+        escribirSumaPotencias(aleatorio);
+        while(aleatorio != 255 || i <= n){
+            escribirSumaPotencias(aleatorio);   
+            System.out.println();
+            i++;
+        }
     }
 
     /**
@@ -76,7 +117,10 @@ public class DemoBucles
      */
     public void escribirCaracter(int n, char caracter)
     {
-         
+        for(int veces = 1;veces <= n;veces++){
+            System.out.printf("%c ",caracter); 
+
+        }
     }
 
     /**
@@ -87,9 +131,25 @@ public class DemoBucles
      */
     public  void mostrarEscalera(int escalones, int alto, int ancho) {
         System.out.println();
+        // for(int contador = 0; contador < escalones; contador++){
+        // if(contador > 0){
+        // for (int i = 0; i < alto; i++){
+        // escribirCaracter(ancho * i,ESPACIO);
+        // }
+        // }
+        // for (int x = 0; x < alto;x++){
+        // escribirCaracter(ancho,ASTERISCO);
+        // } 
+        // }
+        for(int cantidad = 0;cantidad < escalones;cantidad++){
 
-         
-
+            for(int veces = 1;veces <= alto;veces++){
+                //int veces = 0;
+                //while(veces < numero){
+                escribirCaracter(ancho * cantidad, ESPACIO);escribirCaracter(ancho, ASTERISCO);
+                System.out.println();
+                //veces++;
+            }
+        }
     }
-
 }
